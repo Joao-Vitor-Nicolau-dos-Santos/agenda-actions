@@ -1,6 +1,5 @@
 name: Release Workflow
 
-# Dispara este workflow sempre que uma tag no padrão v*.*.* for enviada ao repositório
 on:
   push:
     tags:
@@ -9,23 +8,19 @@ on:
 jobs:
   build:
     name: Detectar nova versão
-    runs-on: ubuntu-latest  # Define o sistema operacional da máquina virtual
+    runs-on: ubuntu-latest
 
     steps:
-      # Clona o repositório dentro do ambiente da Action
       - name: Checkout do repositório
         uses: actions/checkout@v3
 
-      # Exibe o nome completo da tag
       - name: Mostrar referência completa
         run: echo "Tag detectada:'$GITHUB_REF'"
         
-      # Exibe apenas o nome limpo da tag (ex: v1.0.0)
       - name: Mostrar nome simplificado da tag
-        run: echo "Versão publicada:${GITHUB_REF_NAME}"
+        run: echo "Versão publicada: ${{ github.ref_name }}"
 
-      # Exemplo de ação útil: criar artefatos, pacotes ou gerar logs
       - name: Exemplo - gerar log da versão
         run: |
-          echo "Nova versão lançada: ${GITHUB_REF_NAME}" > release_log.txt
+          echo "Nova versão lançada: ${{ github.ref_name }}" > release_log.txt
           cat release_log.txt
