@@ -6,7 +6,8 @@ on:
       - 'v*.*.*'
 
 jobs:
-  Detectar nova versão:
+  detectar-nova-versao:
+    name: Detectar nova versão
     runs-on: ubuntu-latest
     steps:
       - name: Checkout do repositório
