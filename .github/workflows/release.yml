@@ -17,7 +17,7 @@ jobs:
         run: echo "Referência completa: $GITHUB_REF"
 
       - name: Mostrar nome simplificado da tag
-        run: echo "Tag simplificada: ${GITHUB_REF_NAME}"
+        run: echo "Tag simplificada: ${{ github.ref_name }}"
 
       - name: Exemplo - gerar log da versão
-        run: echo "Gerando release da versão ${GITHUB_REF_NAME}"
+        run: echo "Gerando release da versão ${{ github.ref_name }}"
